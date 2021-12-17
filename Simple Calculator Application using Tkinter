@@ -1,0 +1,71 @@
+from tkinter import *
+
+def display(inputs):
+    global exprs,texts
+    exprs=exprs+str(inputs)
+    texts.set(exprs)
+def clear():
+    global exprs,texts
+    exprs=exprs[:len(exprs)-1]
+    texts.set(exprs)
+def all_clear():
+    global exprs,texts
+    exprs=""
+    texts.set(exprs)
+def equal():
+    global exprs,texts
+    output=str(eval(exprs))
+    all_clear()
+    texts.set(output)          
+
+exprs=""
+window=Tk()
+window.title('Calculator')
+window.geometry('320x382')
+window.resizable(0, 0)
+texts=StringVar()
+expr_frame=Frame(window,height=100,width=41)
+expr_frame.grid(row=0,columnspan=14,pady=2)
+inputcalc=Entry(window,textvariable=texts)
+inputcalc.grid(row=0,columnspan=14,ipady=30,ipadx=80)
+button=Button(window,text="AC",width=10,height=3,command=lambda:all_clear())
+button.grid(row=1,column=0)
+button=Button(window,text="^",width=10,height=3,command=lambda:display("**"))
+button.grid(row=1,column=1)
+button=Button(window,text="%",width=10,height=3,command=lambda:display("%"))
+button.grid(row=1,column=2)
+button=Button(window,text="/",width=10,height=3,command=lambda:display("/"))
+button.grid(row=1,column=3)
+button=Button(window,text="0",width=10,height=3,command=lambda:display(0))
+button.grid(row=2,column=0)
+button=Button(window,text="1",width=10,height=3,command=lambda:display(1))
+button.grid(row=2,column=1)
+button=Button(window,text="2",width=10,height=3,command=lambda:display(2))
+button.grid(row=2,column=2)
+button=Button(window,text="3",width=10,height=3,command=lambda:display(3))
+button.grid(row=3,column=0)
+button=Button(window,text="4",width=10,height=3,command=lambda:display(4))
+button.grid(row=3,column=1)
+button=Button(window,text="5",width=10,height=3,command=lambda:display(5))
+button.grid(row=3,column=2)
+button=Button(window,text="6",width=10,height=3,command=lambda:display(6))
+button.grid(row=4,column=0)
+button=Button(window,text="7",width=10,height=3,command=lambda:display(7))
+button.grid(row=4,column=1)
+button=Button(window,text="8",width=10,height=3,command=lambda:display(8))
+button.grid(row=4,column=2)
+button=Button(window,text="9",width=10,height=3,command=lambda:display(9))
+button.grid(row=5,column=0)
+button=Button(window,text="*",width=10,height=3,command=lambda:display("*"))
+button.grid(row=2,column=3)
+button=Button(window,text="-",width=10,height=3,command=lambda:display("-"))
+button.grid(row=3,column=3)
+button=Button(window,text="+",width=10,height=3,command=lambda:display("+"))
+button.grid(row=4,column=3)
+button=Button(window,text=".",width=10,height=3,command=lambda:display("."))
+button.grid(row=5,column=1)
+button=Button(window,text="C",width=10,height=3,command=lambda:clear())
+button.grid(row=5,column=2)
+button=Button(window,text="=",width=10,height=3,command=lambda:equal())
+button.grid(row=5,column=3)
+window.mainloop()
